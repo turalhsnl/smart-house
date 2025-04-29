@@ -1,0 +1,54 @@
+.default-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #0072ff, #00ffc8);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .overlay {
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .default-container h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .default-container p {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+  }
+  
+  .action-buttons button {
+    padding: 12px 24px;
+    font-size: 18px;
+    margin: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+  }
+  
+  .login-btn {
+    background: linear-gradient(to right, #0072ff, #00ffc8);
+    color: white;
+  }
+  
+  .register-btn {
+    background: linear-gradient(to right, #ff8c00, #ff2e63);
+    color: white;
+  }
+  
+  .action-buttons button:hover {
+    transform: scale(1.05);
+  }
+  
+  .action-buttons button:focus {
+    outline: none;
+  }
+  

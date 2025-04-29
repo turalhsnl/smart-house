@@ -1,0 +1,145 @@
+/* 🖥️ HEADER STYLES */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;}
+
+/* LOGO */
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+/* 🔹 NAVIGATION MENU */
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  padding: 5px 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+  color: #00ffc8; /* Neon hover effect */
+}
+
+nav ul li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: #00ffc8;
+  transition: width 0.3s ease-in-out;
+}
+
+nav ul li:hover::after {
+  width: 100%;
+}
+
+/* 🔥 THEME TOGGLE & LOGIN CONTAINER */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Adds spacing between theme toggle & login button */
+}
+
+/* 🎨 THEME TOGGLE BUTTON */
+.theme-toggle-btn {
+  background: linear-gradient(90deg, #ff8c00, #ff2e63); /* Gradient effect */
+  border: none;
+  padding: 10px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  border-radius: 30px; /* Fully rounded corners */
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🌙 ICON SPACING */
+.theme-toggle-btn span {
+  margin-left: 8px;
+}
+
+/* HOVER EFFECT */
+.theme-toggle-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 46, 99, 0.6);
+}
+
+/* ACTIVE (CLICK) EFFECT */
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* 🎨 LIGHT MODE BUTTON COLORS */
+.light .theme-toggle-btn {
+  background: linear-gradient(90deg, #0072ff, #00ffc8);
+}
+
+/* 🌑 DARK MODE BUTTON COLORS */
+.dark .theme-toggle-btn {
+  background: linear-gradient(90deg, #ff2e63, #ff8c00);
+}
+
+/* 🔑 LOGIN BUTTON (ADJUSTED SPACING & STYLE) */
+.login-btn {
+  background: linear-gradient(90deg, #0072ff, #00ffc8);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.login-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.8);
+}
+
+/* 👤 USER PROFILE IMAGE */
+.user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 🌗 APPLY GLOBAL BODY STYLES BASED ON DARK/LIGHT MODE */
+body.dark-mode {
+  background: #121212;
+  color: white;
+}
+
+body.light-mode {
+  background: #f5f5f5;
+  color: black;
+}
+
+body.light-mode nav ul li a {
+  color: black;
+}
+
+/* DARK MODE - Header Nav Links */
+body.dark-mode nav ul li a {
+  color: white;
+}

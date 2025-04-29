@@ -1,0 +1,74 @@
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #0072ff, #00ffc8);
+  }
+  
+  .login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .login-box h2 {
+    text-align: center;
+    color: #0072ff;
+    margin-bottom: 20px;
+  }
+  
+  .login-box input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  .login-box button {
+    background: linear-gradient(to right, #0072ff, #00ffc8);
+    border: none;
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .login-box button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 255, 200, 0.6);
+  }
+  
+  .error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .success-message {
+    color: green;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .register-link {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .register-link span {
+    color: #0072ff;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  

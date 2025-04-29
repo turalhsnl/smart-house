@@ -1,0 +1,43 @@
+.homepage {
+  text-align: center;
+  padding: 20px;
+}
+
+.main-content {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.house-layout {
+  background-color: #fafafa;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.svg-label {
+  font-size: 14px;
+  fill: #333;
+  font-family: 'Segoe UI', sans-serif;
+  pointer-events: none;
+}
+
+body.dark .svg-label {
+  fill: white;
+}
+
+@media (max-width: 1000px) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .house-layout {
+    width: 100%;
+    height: auto;
+  }
+}

@@ -1,0 +1,133 @@
+/* 📌 Control Panel - Floating Rounded Box */
+.controls-panel {
+    width: 240px;
+    padding: 20px;
+    background: #ffffff; /* Light Mode Background */
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ddd;
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  /* 🔹 Panel Title */
+  .controls-panel h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black; /* Always Black */
+  }
+  
+  /* 🔹 Toggle Container */
+  .controls-panel label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background: #f0f0f0;
+    border-radius: 12px; /* Rounded Toggles */
+    margin-bottom: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    color: black; /* Always Black */
+  }
+  
+  /* 🎨 Hover Effect for Toggle Items */
+  .controls-panel label:hover {
+    background: #e0e0e0;
+  }
+  
+  /* 🔥 Toggle Switch Styling */
+  .controls-panel input[type="checkbox"] {
+    appearance: none;
+    width: 45px;
+    height: 24px;
+    background: #ccc;
+    border-radius: 50px;
+    position: relative;
+    transition: background 0.3s ease-in-out;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  /* 🎯 Toggle Slider (Knob) */
+  .controls-panel input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* ✅ Checked State (Toggle ON) */
+  .controls-panel input[type="checkbox"]:checked {
+    background: #4caf50;
+  }
+  
+  /* ✅ Move Slider to Right When Checked */
+  .controls-panel input[type="checkbox"]:checked::before {
+    transform: translateX(21px);
+  }
+  
+  /* 🌙 Dark Mode Styling */
+  .dark .controls-panel {
+    background: #2c2c2c;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid #444;
+  }
+  
+  /* Dark Mode Panel Title */
+  .dark .controls-panel h3 {
+    color: black; /* Always Black */
+  }
+  
+  /* Dark Mode Labels */
+  .dark .controls-panel label {
+    background: #333;
+    color: black !important; /* Always Black */
+  }
+  
+  /* Dark Mode Hover Effect */
+  .dark .controls-panel label:hover {
+    background: #3c3c3c;
+  }
+  
+  /* Dark Mode Toggle ON Color */
+  .dark .controls-panel input[type="checkbox"]:checked {
+    background: #00c8ff;
+  }
+
+  /* 📁 src/components/ControlsPanel.css */
+.controls-panel label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background: #f0f0f0;
+  border-radius: 12px; /* Rounded Toggles */
+  margin-bottom: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.controls-panel input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.controls-panel input[type="checkbox"]:hover {
+  transform: scale(1.3); /* Slightly enlarge on hover */
+}
+
+/* Add distinct color for Kitchen */
+.controls-panel input[type="checkbox"]:nth-child(7) {
+  background: #ffb84d;
+}
+
+  
