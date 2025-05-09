@@ -1,40 +1,65 @@
-import { SmartHouseProvider } from "./context/SmartHouseContext"; 
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { SmartHouseProvider } from "./context/SmartHouseContext";
 import Header from "./componenets/header/Header";
 import HomePage from "./componenets/homepage/Homepage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import EventsLog from "./pages/eventslog/EventsLog"; 
-import DefaultPage from "./pages/DefaultPage/DefaultPage";  // Import the DefaultPage
-
-
-
+import EventsLog from "./pages/eventslog/EventsLog";
+import DefaultPage from "./pages/DefaultPage/DefaultPage";
+import api from "./api/api";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  console.log("REACT_APP_API_URL:", process.env.REACT_APP_API_URL);
+  const [user, setUser] = useState(null); // 🧠 Full user object
+  const [loading, setLoading] = useState(true);
+  const [statusError, setStatusError] = useState("");
 
-  // Simulate user login state based on localStorage or some logic
+  // ✅ Load user from localStorage on first render
   useEffect(() => {
-    const userLoggedIn = localStorage.getItem("userLoggedIn");
-    if (userLoggedIn) {
-      setIsAuthenticated(true);
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch {
+        localStorage.removeItem("user");
+      }
     }
   }, []);
 
-  const handleLoginLogout = (status) => {
-    setIsAuthenticated(status);
-    localStorage.setItem("userLoggedIn", status ? "true" : "false");
+  // 🌐 Fetch backend status on first mount
+  useEffect(() => {
+    api.get("/api/users/681bd93356a60e7d7ffdebf8")
+      .then((res) => console.log("Backend status:", res.data))
+      .catch((err) => {
+        console.error("Error fetching status:", err);
+        setStatusError("Backend not responding.");
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  // 🧠 Login Handler - receives user object
+  const handleLogin = (userData) => {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
   };
+
+  
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+  };
+
+  if (loading) return <p>Loading...</p>;
+  if (statusError) return <p>{statusError}</p>;
 
   return (
     <SmartHouseProvider>
       <Router>
-        <Header isAuthenticated={isAuthenticated} onLoginLogout={handleLoginLogout} />
+        <Header isAuthenticated={!!user} onLoginLogout={user ? handleLogout : handleLogin} />
         <Routes>
-          {/* Redirect to DefaultPage if no user is authenticated */}
-          <Route path="/" element={isAuthenticated ? <HomePage /> : <DefaultPage />} />
-          <Route path="/login" element={<LoginPage onLogin={handleLoginLogout} />} />
+          <Route path="/" element={user ? <HomePage user={user} /> : <DefaultPage />} />
+          <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/events-log" element={<EventsLog />} />
         </Routes>

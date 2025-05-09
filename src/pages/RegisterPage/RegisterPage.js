@@ -1,32 +1,46 @@
+// src/pages/RegisterPage/RegisterPage.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { saveUser, userExists } from "../../utils/userDb";
-import "./RegisterPage.css"; 
+import api from "../../api/api";  // Axios instance for making requests
+import "./RegisterPage.css"; // Import your CSS file for styling
 
 const RegisterPage = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [fullname, setFullname] = useState("");
   const [password, setPassword] = useState("");
-  const [confirm, setConfirm] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (!username || !password) {
+    // Validation checks
+    if (!email || !fullname || !password || !confirmPassword) {
       return setError("All fields are required.");
     }
 
-    if (password !== confirm) {
+    if (password !== confirmPassword) {
       return setError("Passwords do not match.");
     }
 
-    if (userExists(username)) {
-      return setError("Username already exists.");
-    }
+    // Log to check the fullname value before sending
+    console.log("Full Name:", fullname);
 
-    saveUser({ username, password });
-    navigate("/login", { state: { registered: true } });
+    try {
+      // Make sure the correct data is sent
+      await api.post("http://localhost:8000/api/users/", {
+        email,
+        fullname,
+        password,
+      });
+
+      // Redirect to login page after successful registration
+      navigate("/login", { state: { registered: true } });
+    } catch (err) {
+      const msg = err.response?.data?.detail || "Registration failed.";
+      setError(msg);
+    }
   };
 
   return (
@@ -35,10 +49,17 @@ const RegisterPage = () => {
         <h2>Create Account</h2>
 
         <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
           type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Full Name"
+          value={fullname}
+          onChange={(e) => setFullname(e.target.value)}
         />
 
         <input
@@ -51,13 +72,18 @@ const RegisterPage = () => {
         <input
           type="password"
           placeholder="Confirm Password"
-          value={confirm}
-          onChange={(e) => setConfirm(e.target.value)}
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
         />
 
         {error && <div className="error">{error}</div>}
 
         <button type="submit">Register</button>
+
+        <p className="login-link">
+          Already have an account?{" "}
+          <span onClick={() => navigate("/login")}>Login here</span>
+        </p>
       </form>
     </div>
   );
