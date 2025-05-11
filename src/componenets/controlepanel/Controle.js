@@ -1,6 +1,7 @@
 import React,{ useContext } from "react";
 import "./Controle.css";
 import { SmartHouseContext } from "../../context/SmartHouseContext";
+import HomePage from "../homepage/Homepage";
 
 
 
@@ -138,6 +139,7 @@ const ControlePanel = ({
         Smart Speaker
       </label>
     </div>
+    
   );
   
 };

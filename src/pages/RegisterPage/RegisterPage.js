@@ -28,11 +28,12 @@ const RegisterPage = () => {
     console.log("Full Name:", fullname);
 
     try {
-      // Make sure the correct data is sent
+      // Make sure the correct data is sent, including a default 'roles' field as a list
       await api.post("http://localhost:8000/api/users/", {
         email,
         fullname,
         password,
+        roles: ["user"], // Add a default 'roles' field as an array
       });
 
       // Redirect to login page after successful registration

@@ -1,0 +1,154 @@
+/* src/pages/RulesPage/RulesPage.css */
+
+/* Container for the entire page */
+.rules-container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Style for the device addition button */
+.add-device {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Horizontally center the button */
+  align-items: center; /* Vertically center the button */
+  height: 100px; /* Adjust height to give enough space for centering */
+}
+
+.add-device-btn {
+  font-size: 2rem;
+  padding: 15px;
+  background-color: #28a745;
+  color: black; /* Black text inside the + button */
+  border: none;
+  border-radius: 50%; /* Make the button circular */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s ease;
+  width: 60px; /* Keep the button square-shaped */
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.add-device-btn:hover {
+  background-color: #218838;
+  transform: scale(1.1); /* Slightly enlarge the button on hover */
+}
+
+.add-device-btn:focus {
+  outline: none;
+}
+
+/* Dropdown menu style for selecting devices */
+.dropdown-menu {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  border-radius: 4px;
+  top: 75px; /* Adjusted position for the dropdown */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 0;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+  color: black;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Container for the list of added device rules */
+.device-rules {
+  margin-top: 20px;
+}
+
+/* Style for each device's rule block */
+.device-rule {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: black; /* Text inside device rule is black */
+}
+
+.device-rule h4 {
+  font-size: 1.5rem;
+  color: black; /* Heading text is black */
+}
+
+/* Settings for each device */
+.device-setting {
+  margin-bottom: 15px;
+}
+
+.device-setting label {
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+.device-setting input {
+  padding: 5px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Save button style */
+.save-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.save-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Delete button style */
+.delete-btn {
+  background-color: #dc3545; /* Red color for the delete button */
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #c82333; /* Darker red on hover */
+}

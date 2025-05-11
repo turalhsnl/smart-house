@@ -1,42 +1,58 @@
-// src/pages/LoginPage/LoginPage.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../../api/api";  // Axios instance for making requests
+import axios from "axios";  
 import "./LoginPage.css";
 
 const LoginPage = ({ onLogin }) => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState(""); 
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!username || !password) {
+      setError("Please fill in both username and password.");
+      return;
+    }
+
     try {
-      // Send POST request to the backend login endpoint
-      const response = await api.post("http://localhost:8000/api/login", {
-        email,
-        password,  // Send the plain password to the backend for login
+      const response = await axios.post("http://localhost:8000/api/users/token", {
+        email: username,  
+        password: password,  
       });
 
-      // If login is successful, the backend will return user data and a token
-      const { user, token } = response.data;
+      const { access_token, user_id } = response.data;
 
-      // Store the token (you can store it in localStorage or state)
-      localStorage.setItem("authToken", token);
+      
+      localStorage.setItem('token', access_token);
+      localStorage.setItem('userId', user_id);
 
-      // Pass the user data to the parent component (onLogin)
-      onLogin(user);  
+      
+      axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
 
-      // Redirect to the home page after successful login
-      navigate("/");
+      console.log('Login successful');
 
-    } catch (err) {
-      setError("Invalid email or password. Please try again.");
+    
+      const { token, user } = response.data;
+
+      localStorage.setItem("authToken", token);  
+
+      
+      onLogin(user);
+
+      
+      navigate("/");  
+      window.location.reload()
+
+    } catch (error) {
+      console.error('Login failed:', error.response?.data || error.message);
+      setError("Invalid username or password. Please try again.");
     }
   };
 
+  
   return (
     <div className="login-container">
       <form className="login-box" onSubmit={handleSubmit}>
@@ -45,17 +61,17 @@ const LoginPage = ({ onLogin }) => {
         {error && <div className="error">{error}</div>}
 
         <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          type="text"   
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}  
         />
 
         <input
           type="password"
           placeholder="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}  
         />
 
         <button type="submit">Login</button>
