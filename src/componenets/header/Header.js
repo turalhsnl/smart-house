@@ -21,7 +21,7 @@ const Header = ({ isAuthenticated, onLoginLogout }) => {
       <nav className="navbar">
         <ul>
           <li><Link to="/">Home</Link></li>
-          <li><Link to="#devices">Devices</Link></li>
+          <li><Link to="/devices">Devices</Link></li>
           <li><Link to="/rules">Rules</Link></li>
           <li><Link to="/events-log">Events Log</Link></li>
         </ul>

@@ -15,7 +15,7 @@ const RegisterPage = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    // Validation checks
+   
     if (!email || !fullname || !password || !confirmPassword) {
       return setError("All fields are required.");
     }
@@ -33,7 +33,7 @@ const RegisterPage = () => {
         email,
         fullname,
         password,
-        roles: ["user"], // Add a default 'roles' field as an array
+        roles: ["user"], 
       });
 
       // Redirect to login page after successful registration

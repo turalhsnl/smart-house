@@ -10,6 +10,7 @@ import ControlePanel from "./componenets/controlepanel/Controle";
 import api from "./api/api";
 import HomePage from "./componenets/homepage/Homepage";
 import RulesPage from "./pages/Rules/RulesPage";
+import DevicePage from "./pages/Devices/Device";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -89,7 +90,7 @@ const App = () => {
           element={user ? < RulesPage user={user} /> : <Navigate to="/rules" />}
         />
         
-        {/* Other Routes */}
+        <Route path="/devices" element={<DevicePage />} />
         <Route path="/events-log" element={<EventsLog />} />
       </Routes>
     </SmartHouseProvider>
