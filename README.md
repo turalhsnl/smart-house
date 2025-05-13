@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Smart House Frontend 🌐💻
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview ✨💡🖥️
+The Smart House Frontend is a responsive web interface developed using React and JavaScript. It provides users with an intuitive platform to interact with and manage their smart home system. The frontend communicates with the backend via API requests, ensuring real-time synchronization of device states, sensor data, and automation rules.
 
-## Available Scripts
+## Core Features 🚀🌟
 
-In the project directory, you can run:
+### User Interface (UI)
+- A dynamic dashboard for users to control and monitor devices.
+- Real-time updates on device states (on/off) and sensor data.
+- Interactive pages to manage devices, events, and automation rules.
 
-### `npm start`
+### Device Management
+- Add, update, and remove devices from the smart home system.
+- Toggle device states (on/off) and view real-time device status.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Sensor Monitoring
+- Real-time display of sensor readings for various devices.
+- Filter sensors based on the device and view their current data.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Rule Configuration
+- Manage automation rules to control device behavior based on triggers and conditions.
+- View and delete existing rules.
 
-### `npm test`
+### Event Logging
+- Track and log events triggered by devices and sensors in real-time.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack 🛠️💻
+- **JavaScript** for dynamic, event-driven functionality.
+- **React** for building the interactive user interface and managing component state.
+- **Axios** for making API requests to the backend to fetch and manage data.
+- **.env** for environment-specific configurations (e.g., backend API URLs).
+- **CSS** for styling and ensuring a responsive layout across devices.
 
-### `npm run build`
+## Project Structure 📂
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+smarthouse-frontend/
+├── public/                   # Static files (favicon, index.html, images)
+│   ├── favicon.ico           # Favicon for the app
+│   ├── index.html            # The main HTML template
+│   ├── logo192.png           # Logo for 192px resolution
+│   ├── logo512.png           # Logo for 512px resolution
+│   ├── manifest.json         # Web app manifest for adding app to home screen
+│   └── robots.txt            # Instructions for web crawlers
+├── src/
+│   ├── api/                  # API configuration and requests
+│   ├── components/           # Reusable components (buttons, device lists)
+│   │   ├── controlpanel/     # Control panel component (Control.js)
+│   │   ├── footer/           # Footer component (Footer.js)
+│   │   ├── header/           # Header component (Header.js)
+│   │   └── homepage/         # Homepage component (Homepage.js)
+│   ├── context/              # React context for managing global state
+│   ├── pages/                # Pages for each section of the app
+│   │   ├── DefaultPage/      # Default landing page (DefaultPage.js)
+│   │   ├── Devices/          # Device management page (Device.js)
+│   │   ├── EventsLog/        # Event logging page (EventsLog.js)
+│   │   ├── LoginPage/        # Login page (LoginPage.js)
+│   │   └── RegisterPage/     # User registration page (RegisterPage.js)
+│   ├── utils/                # Utility functions and helpers
+│   ├── App.css               # Global styling for the app
+│   ├── App.js                # Main React component
+│   ├── App.test.js           # Tests for the App component
+│   ├── index.css             # Styling for the index page
+│   ├── index.js              # React entry point
+│   ├── logo.svg              # App logo
+│   ├── reportWebVitals.js    # Web performance metrics
+│   └── setupTests.js         # Test setup configuration
+├── .env                      # Environment variables for configuration
+├── .gitignore                # Git ignore file to exclude unnecessary files
+├── package-lock.json         # Lock file for project dependencies
+└── package.json              # Project dependencies and scripts
